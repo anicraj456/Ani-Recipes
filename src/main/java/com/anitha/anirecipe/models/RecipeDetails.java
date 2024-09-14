@@ -1,6 +1,7 @@
 package com.anitha.anirecipe.models;
 
 import jakarta.persistence.Entity;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class RecipeDetails extends AbstractEntity{

@@ -2,6 +2,7 @@ package com.anitha.anirecipe.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Size;
 
 import java.util.ArrayList;
 import java.util.List;
