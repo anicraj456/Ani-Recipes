@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<header th:replace="fragments :: header"></header>
+
+<table class="table table-striped">
+    <tr>
+        <th>Name</th>
+        <td th:text="${recipe.name}"></td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td th:text="${recipe.recipeDetails.description}"></td>
+    </tr>
+    <tr>
+        <th>Category</th>
+        <td th:text="${recipe.recipeCategory.name}"></td>
+    </tr>
+    <tr>
+
+        <th>Ingredients</th>
+        <td>
+            <ul>
+                <li th:each="ingredient : ${recipe.ingredients}" th:text="${ingredient.quantity} + ' ' + ${ingredient.name}"></li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <th>Steps</th>
+        <td>
+            <ol>
+                <li th:each="step : ${recipe.steps}" th:text="${step.instructions}"></li>
+            </ol>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
