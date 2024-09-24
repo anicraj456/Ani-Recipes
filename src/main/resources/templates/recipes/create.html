@@ -32,6 +32,81 @@
         </label>
     </div>
     <div class="form-group">
+    <table>
+        <thead>
+        <tr>
+        <tr>
+            <th>Ingredient Name</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Loop through ingredients -->
+        <tr th:each="ingredient, stat : ${recipe.ingredients}">
+            <td>
+                <input type="text" th:field="*{ingredients[__${stat.index}__].name}" placeholder="Ingredient Name" />
+            </td>
+            <td>
+                <input type="text" th:field="*{ingredients[__${stat.index}__].quantity}" placeholder="Quantity" />
+            </td>
+            <td>
+                <!-- Button to delete the ingredient -->
+                <button type="submit" th:action="@{/recipes/deleteIngredient(stat.index)}" method="post">Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+        <!-- Add a new ingredient by adding an empty row to the list -->
+        <button type="button" onclick="addIngredient()">Add Ingredient</button>
+        <button type="submit">Submit Ingredient</button>
+
+<script>
+    function addIngredient() {
+        // Add a new row dynamically by updating the recipe.ingredients list
+        const table = document.querySelector('tbody');
+        const newRow = table.insertRow();
+        newRow.innerHTML = `
+            <td><input type="text" name="ingredients[${table.rows.length}].name" placeholder="Ingredient Name"></td>
+            <td><input type="text" name="ingredients[${table.rows.length}].quantity" placeholder="Quantity"></td>
+        `;
+    }
+</script>
+    </div>
+
+    <div class="form-group">
+        <table>
+            <thead>
+            <tr>
+                <th>Step Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Loop through steps -->
+            <tr th:each="step, stat : ${recipe.steps}">
+                <td>
+                    <input type="text" th:field="*{steps[__${stat.index}__].instructions}" placeholder="Step Description" />
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <!-- Add a new step dynamically -->
+        <button type="button" onclick="addStep()">Add Step</button>
+        <button type="submit">Submit Steps</button>
+
+    <script>
+        function addStep() {
+            // Add a new row for a step dynamically
+            const table = document.querySelector('tbody');
+            const newRow = table.insertRow();
+            newRow.innerHTML = `
+                <td><input type="text" name="steps[${table.rows.length}].instructions" placeholder="Step Description"></td>
+            `;
+        }
+    </script>
+    </div>
+
+    <div class="form-group">
         <input type="submit" value="Create" class="btn btn-success">
     </div>
 </form>

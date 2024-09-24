@@ -1,7 +1,7 @@
 package com.anitha.anirecipe.data;
 
 import com.anitha.anirecipe.models.Ingredient;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface IngredientRepository extends CrudRepository<Ingredient, Integer> {
+public interface IngredientRepository extends JpaRepository<Ingredient, Integer> {
 }

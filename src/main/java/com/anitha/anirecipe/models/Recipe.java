@@ -24,10 +24,12 @@ public class Recipe extends AbstractEntity{
     @NotNull(message = "Category is required")
     private RecipeCategory recipeCategory;
 
-    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL)
+    //@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "recipe")
     private List<Ingredient> ingredients = new ArrayList<>();
 
-    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL)
+    //@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "recipe")
     private List<Step> steps = new ArrayList<>();
 
     public Recipe(String name, RecipeDetails recipeDetails, RecipeCategory recipeCategory, List<Ingredient> ingredients, List<Step> steps) {

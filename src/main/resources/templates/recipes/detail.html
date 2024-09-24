@@ -19,14 +19,16 @@
         <td th:text="${recipe.recipeCategory.name}"></td>
     </tr>
     <tr>
-
         <th>Ingredients</th>
         <td>
-            <ul>
-                <li th:each="ingredient : ${recipe.ingredients}" th:text="${ingredient.quantity} + ' ' + ${ingredient.name}"></li>
-            </ul>
+        <ul>
+            <li th:each="ingredient : ${recipe.ingredients}">
+                <span th:text="${ingredient.name}"></span>: <span th:text="${ingredient.quantity}"></span>
+            </li>
+        </ul>
         </td>
     </tr>
+
     <tr>
         <th>Steps</th>
         <td>
